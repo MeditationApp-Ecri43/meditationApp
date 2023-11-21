@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-import { useAppSelector, useAppDispatch } from '../hooks';
+;
 
 const Timer = () => {
-    
+  return (
+    <div></div>
+  )
 };
 
 export default Timer;

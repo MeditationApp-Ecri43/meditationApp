@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import './App.css';
-import Login from './components/Login.ts'
-import Timer from './components/Timer.ts'
+import Login from './components/Login.ts';
+import Timer from './components/Timer.ts';
 
 /* 
 state: logged in? 
@@ -15,17 +15,21 @@ state: logged in?
     render sits
 */
 
-
+interface State {
+  setIsLoggedIn: 
+}
 
 function App() {
-  const loggedIn = store.value
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   return (
     <>
       <div>
         <h1>Meditation App</h1>
         <p> "A wandering mind is an unhappy mind"</p>
       </div>
-      <div>{loggedIn ? <Timer /> : <Login/>}</div>
+      <div>
+        {isLoggedIn ? <Timer setIsLoggedIn={setIsLoggedIn} /> : <Login />}
+      </div>
     </>
   );
 }
