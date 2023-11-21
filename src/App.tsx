@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import './App.css';
+import Login from './components/Login.ts'
+import Timer from './components/Timer.ts'
+
+/* 
+state: logged in? 
+  if false:
+    render login component
+  if true:
+    render sits
+*/
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const loggedIn = store.value
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>Meditation App</h1>
+        <p> "A wandering mind is an unhappy mind"</p>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div>{loggedIn ? <Timer /> : <Login/>}</div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
