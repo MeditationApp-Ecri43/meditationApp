@@ -4,7 +4,7 @@ import { ServerError } from '../types.ts';
 import path from 'path';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes.ts';
-import sitRoutes from './routes/sitRoutes.ts';
+// import sitRoutes from './routes/sitRoutes.ts';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 
@@ -21,7 +21,7 @@ app.use(
 
 app.use(cookieParser());
 app.use('/users', userRoutes);
-app.use('/sits', sitRoutes);
+// app.use('/sits', sitRoutes);
 
 app.get('/tests', (_req, res) => {
   console.log('get request successful');
@@ -29,7 +29,7 @@ app.get('/tests', (_req, res) => {
 });
 
 app.use(express.static(path.join(path.resolve(), 'dist')));
-app.get('/', (req: Request, res: Response): void => {
+app.get('/', (_req: Request, res: Response): void => {
   const indexPath = path.join(path.resolve(), 'dist', 'index.html');
   res.sendFile(indexPath);
 });
@@ -37,9 +37,9 @@ app.get('/', (req: Request, res: Response): void => {
 app.use(
   (
     err: ServerError,
-    req: Request,
+    _req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
   ): Response => {
     const defaultErr: ServerError = {
       log: 'Express error handler caught unknown middleware error',
