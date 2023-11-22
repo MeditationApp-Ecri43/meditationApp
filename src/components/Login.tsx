@@ -4,9 +4,7 @@ import { loginProps } from '../App';
 const Login = (props: loginProps) => {
   const handleSubmit = (): void => {
     // e.preventDefault();
-    console.log('hi');
     props.setIsLoggedIn(true);
-    console.log(props.isLoggedIn);
   };
 
   return (

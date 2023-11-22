@@ -11,7 +11,7 @@ state: logged in?
   if false:
     render login component
   if true:
-    render sits
+    render Timer
 */
 
 export interface loginProps {
@@ -21,7 +21,7 @@ export interface loginProps {
 }
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [username, setUsername] = useState<null | string>(null);
+  const [username, setUsername] = useState<(null | string)>(null);
   return (
     <>
       <div>
