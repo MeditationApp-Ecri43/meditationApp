@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { loginProps } from '../App';
+import { LoginProps } from '../../types';
 
-const Login = (props: loginProps) => {
+const Login = (props: LoginProps) => {
   const handleSubmit = (): void => {
     // e.preventDefault();
     props.setIsLoggedIn(true);

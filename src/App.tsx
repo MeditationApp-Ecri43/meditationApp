@@ -14,14 +14,9 @@ state: logged in?
     render Timer
 */
 
-export interface loginProps {
-  isLoggedIn: boolean;
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-  username: string;
-}
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [username, setUsername] = useState<(null | string)>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [username, setUsername] = useState<string | null>(null);
   return (
     <>
       <div>
@@ -30,10 +25,11 @@ const App = () => {
       </div>
       <div>
         {isLoggedIn ? (
-          <Timer setIsLoggedIn={setIsLoggedIn} />
+          <Timer isLoggedIn={isLoggedIn} username={username} />
         ) : (
           <Login
             setIsLoggedIn={setIsLoggedIn}
+            isLoggedIn={isLoggedIn}
             username={username}
             setUsername={setUsername}
           />
