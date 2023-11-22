@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { ReactComponentElement, useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import './index.css';
 import './App.css';
-import Login from './components/Login.ts';
-import Timer from './components/Timer.ts';
+import Login from './components/Login.tsx';
+import Timer from './components/Timer.tsx';
 
 /* 
 state: logged in? 
@@ -15,12 +14,14 @@ state: logged in?
     render sits
 */
 
-interface State {
-  setIsLoggedIn: 
+export interface loginProps {
+  isLoggedIn: boolean;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  username: string;
 }
-
-function App() {
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [username, setUsername] = useState<null | string>(null);
   return (
     <>
       <div>
@@ -28,10 +29,18 @@ function App() {
         <p> "A wandering mind is an unhappy mind"</p>
       </div>
       <div>
-        {isLoggedIn ? <Timer setIsLoggedIn={setIsLoggedIn} /> : <Login />}
+        {isLoggedIn ? (
+          <Timer setIsLoggedIn={setIsLoggedIn} />
+        ) : (
+          <Login
+            setIsLoggedIn={setIsLoggedIn}
+            username={username}
+            setUsername={setUsername}
+          />
+        )}
       </div>
     </>
   );
-}
+};
 
 export default App;

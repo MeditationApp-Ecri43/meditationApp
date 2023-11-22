@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 
-;
-
-const Timer = () => {
-  return (
-    <div></div>
-  )
+const Timer = (props: TimerProps): JSX.Element => {
+  return <div></div>;
 };
 
 export default Timer;
